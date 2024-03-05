@@ -1,23 +1,48 @@
 <section class="container">
-    <h3>NUEVO USUARIO</h3>
+    <h3 class="text-center">NUEVO USUARIO</h3>
     <form [formGroup]="formModel" (ngSubmit)="getDataForm()">
         <div>
             <label for="first_name" class="form-label">Nombre Usuario</label>
-            <input formControlName="first_name" id="first_name" class="form-control" placeholder="Introduzca nombre de usuario" type="text">
+            <input type="text" formControlName="first_name" id="first_name" class="form-control" placeholder="Introduzca nombre de usuario">
+       @if(checkControl('first_name', 'required') ) {
+        <p class="error">Campo requerido</p>
+       }
+       @if(checkControl('first_name', 'minlength')) {
+        <p class="error">Campo tiene que tener mínimo 3 carácteres</p>
+       }
         </div>
         <div>
             <label for="last_name" class="form-label">Apellido Usuario</label>
-            <input formControlName="last_name" id="last_name" class="form-control" placeholder="Introduzca apellido de usuario" type="text">
+            <input type="text" formControlName="last_name" id="last_name" class="form-control" placeholder="Introduzca apellido de usuario">
+        @if(checkControl('last_name', 'required') ) {
+        <p class="error">Campo requerido</p>
+       }
+       @if(checkControl('last_name', 'minlength')) {
+        <p class="error">Campo tiene que tener mínimo 3 carácteres</p>
+       }
         </div>
         <div>
             <label for="email" class="form-label">Email Usuario</label>
-            <input formControlName="email" id="email" class="form-control" placeholder="Introduzca email de usuario" type="email">
+            <input type="email" formControlName="email" id="email" class="form-control" placeholder="Introduzca email de usuario">
+        @if(checkControl('email', 'required') ) {
+        <p class="error">Campo requerido</p>
+       }
+       @if(checkControl('email', 'pattern')) {
+        <p class="error">Campo no es de tipo email</p>
+       }
         </div>
         <div>
             <label for="image" class="form-label">Imagen Usuario</label>
             <input formControlName="image" id="image" class="form-control" placeholder="Introduzca url de foto usuario" >
+        @if(checkControl('image', 'required') ) {
+        <p class="error">Campo requerido</p>
+       }
+       @if(checkControl('image', 'pattern')) {
+        <p class="error">el fórmato no es válido, añade la url de la imagen</p>
+       }
         </div>
-       <input type="submit" class="btn btn-secondary  mt-3" value="Guardar">
+       <input type="submit" class="btn btn-secondary  mt-3" value="Guardar"
+       [disabled]="!formModel.valid">
 
     </form>
 

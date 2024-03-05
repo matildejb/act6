@@ -7,3 +7,16 @@ form {
     padding-left: 10px;
     margin-bottom: 100px;
 }
+
+input.ng-invalid.ng-touched {
+    border-bottom: 2px solid red;
+}
+input.ng-valid.ng-touched {
+    border-bottom: 2px solid rgb(0, 255, 76);
+}
+
+.error{
+    font-size: 80%;
+    color: red;
+    margin: 0 0 0 10px;
+}

@@ -3,11 +3,12 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UserCardComponent } from '../../components/user-card/user-card.component';
 import { RouterLink } from '@angular/router';
+import { UserDetailsComponent } from '../../components/user-details/user-details.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [UserCardComponent, RouterLink],
+  imports: [UserCardComponent, UserDetailsComponent ,RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

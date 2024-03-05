@@ -11,9 +11,9 @@ export class UsuariosService {
   httpClient = inject(HttpClient)
   baseUrl = 'https://peticiones.online/api/users'
 
-  //Observable 
+  //Promise
   getAllPromises(): Promise<IUsuario[]>{
-    return lastValueFrom(this.httpClient.get<IUsuario[]>(this.baseUrl))
+    return lastValueFrom(this.httpClient.get<{ data: IUsuario[]}>(this.baseUrl)).then(response => response.data);
   }
-  
+
 }
