@@ -13,5 +13,4 @@ import { BotoneraComponent } from '../botonera/botonera.component';
 export class UserCardComponent {
   @Input() miUsuario!: IUsuario
 
-
 }

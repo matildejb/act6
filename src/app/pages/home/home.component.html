@@ -1,10 +1,7 @@
-<div class="row">
-    @for(usuario of arrUsers; track usuario.id){
-        <article class="col-12 col-md-6 col-lg-3">
-<app-user-card [miUsuario]="usuario"></app-user-card>
-        </article>
-    }
-
-<app-user-card></app-user-card>
-<app-user-details></app-user-details>
+<div class="container pb-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4"> 
+    @for(usuario of misUsuarios; track usuario.id){    
+<app-user-card [miUsuario]="usuario"></app-user-card>     
+    } 
+</div> 
 </div>
