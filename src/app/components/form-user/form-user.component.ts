@@ -9,18 +9,21 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './form-user.component.css'
 })
 export class FormUserComponent {
-
+  tipo: string = 'NUEVO';
   formModel: FormGroup;
 
   constructor(){
     this.formModel = new FormGroup({
       first_name: new FormControl(null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        //no se permite numeros
+        Validators.pattern('[^0-9]*')
       ]),
       last_name: new FormControl(null, [
         Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(3),
+        Validators.pattern('[^0-9]*')
       ]),
       email: new FormControl(null, [
         Validators.required,

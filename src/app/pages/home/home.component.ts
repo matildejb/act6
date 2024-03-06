@@ -4,11 +4,12 @@ import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UserCardComponent } from '../../components/user-card/user-card.component';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AlertaComponent } from '../../components/alerta/alerta.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [UserCardComponent ,RouterLink],
+  imports: [UserCardComponent ,RouterLink, AlertaComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -12,18 +12,22 @@ import { BotoneraComponent } from '../botonera/botonera.component';
   styleUrl: './user-details.component.css'
 })
 export class UserDetailsComponent {
-
+//caputurar el id de la serie para poder hacer una peticion a la api
   activatedRoute = inject(ActivatedRoute)
   usuariosService = inject(UsuariosService)
   unUsuario!: IUsuario;
 
-  ngOnInit(){
-   /* this.activatedRoute.params.subscribe((params: any) => {
-      const id = Number(params.user)
-      let response = this.usuariosService.getById(id)
-      console.log(response)
+  ngOnInit(): void{
+   this.activatedRoute.params.subscribe( async (params: any) =>  {
+      const id = params.idUsuario
+      try{
+        this.unUsuario = await this.usuariosService.getById(id)
+        
+      }catch (error) {
+        console.log(error)
+      }
       
-    })*/
+    })
   }
 
 }

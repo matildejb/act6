@@ -4,3 +4,24 @@
     margin-right: 20px;
    
 }
+.card-title {
+    font-size: 2rem;
+    
+}
+
+@media (max-width: 780px) {
+    .card-body {
+      flex-direction: column;
+    }
+  
+    .imagen {
+      margin-bottom: 1rem;
+      border: hidden;
+      padding-right: 0px;
+      margin-right: 0px;
+    }
+    .card-title{
+        text-align: center;
+    }
+
+  }
