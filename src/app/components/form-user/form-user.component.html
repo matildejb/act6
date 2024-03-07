@@ -3,7 +3,7 @@
     <form [formGroup]="formModel" (ngSubmit)="getDataForm()">
         <div>
             <label for="first_name" class="form-label">Nombre Usuario</label>
-            <input type="text" formControlName="first_name" id="first_name" class="form-control" placeholder="Introduzca nombre de usuario">
+            <input type="text" formControlName="first_name" id="first_name" class="form-control" placeholder="Introduzca nombre">
        @if(checkControl('first_name', 'required') ) {
         <p class="error">Campo requerido</p>
        }
@@ -16,7 +16,7 @@
         </div>
         <div>
             <label for="last_name" class="form-label">Apellido Usuario</label>
-            <input type="text" formControlName="last_name" id="last_name" class="form-control" placeholder="Introduzca apellido de usuario">
+            <input type="text" formControlName="last_name" id="last_name" class="form-control" placeholder="Introduzca apellido">
         @if(checkControl('last_name', 'required') ) {
         <p class="error">Campo requerido</p>
        }
@@ -29,7 +29,7 @@
         </div>
         <div>
             <label for="email" class="form-label">Email Usuario</label>
-            <input type="email" formControlName="email" id="email" class="form-control" placeholder="Introduzca email de usuario">
+            <input type="email" formControlName="email" id="email" class="form-control" placeholder="Introduzca email">
         @if(checkControl('email', 'required') ) {
         <p class="error">Campo requerido</p>
        }
@@ -39,7 +39,7 @@
         </div>
         <div>
             <label for="image" class="form-label">Imagen Usuario</label>
-            <input type="text" formControlName="image" id="image" class="form-control" placeholder="Introduzca url de foto usuario" >
+            <input type="text" formControlName="image" id="image" class="form-control" placeholder="Introduzca url de foto" >
         @if(checkControl('image', 'required') ) {
         <p class="error">Campo requerido</p>
        }
@@ -47,7 +47,7 @@
         <p class="error">el fórmato no es válido, añade la url de la imagen</p>
        }
         </div>
-       <input type="submit" class="btn btn-secondary  mt-3" value="Guardar"
+       <input type="submit" class="btn btn-secondary  mt-3" [value]="boton" 
        [disabled]="!formModel.valid">
 
     </form>

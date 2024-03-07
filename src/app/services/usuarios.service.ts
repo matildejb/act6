@@ -8,7 +8,6 @@ import { Observable, lastValueFrom, of } from 'rxjs';
 })
 export class UsuariosService {
 
-  private arrUsuarios: IUsuario[] = [];
   private httpClient = inject(HttpClient)
   private baseUrl: string = 'https://peticiones.online/api/users'
 

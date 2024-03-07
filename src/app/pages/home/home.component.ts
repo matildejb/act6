@@ -3,13 +3,11 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UserCardComponent } from '../../components/user-card/user-card.component';
 import { RouterLink } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AlertaComponent } from '../../components/alerta/alerta.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [UserCardComponent ,RouterLink, AlertaComponent],
+  imports: [UserCardComponent ,RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -17,6 +15,7 @@ export class HomeComponent {
 
  private usuariosServices = inject(UsuariosService)
   misUsuarios: IUsuario[] = [];
+  page: number = 1;
   
 
   ngOnInit(): void{

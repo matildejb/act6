@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
-import { UserDetailsComponent } from '../user-details/user-details.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-botonera',
@@ -14,16 +14,30 @@ export class BotoneraComponent {
   @Input() parent: string = "";
   @Input() idUsuario: string = "";
   usuariosServices = inject(UsuariosService)
+  router = inject(Router)
 
  async borrarUsuario(id: string){
     //llamar al servicio para borrar usuario
-    let confirmacion = confirm('¿Estás seguro de eliminar definitivamente este usuario?')
-    if(confirmacion) {
-      //borrar
-      let response = await this.usuariosServices.delete(id);
-     if(response._id){
-      alert('Se ha borrado correctamente el usuario de' + " " +response.first_name + " " + response.last_name)
-     }
-    }
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Perderás tu usuario definitivamente",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "cancelar",
+      confirmButtonText: "¡SÍ, Quiero hacerlo!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Eliminado",
+          text: "Tu usuario ha sido eliminado correctamente",
+          icon: "success"
+          
+        });
+        this.router.navigate(['/home'])
+      }
+    });
+ 
   }
 }

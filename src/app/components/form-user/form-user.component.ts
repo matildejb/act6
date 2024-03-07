@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-user',
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormUserComponent {
   tipo: string = 'NUEVO';
+  boton: string = 'Guardar';
   formModel: FormGroup;
   usuariosServices = inject(UsuariosService);
   router = inject(Router)
@@ -58,6 +60,8 @@ export class FormUserComponent {
   ngOnInit(){
     this.activatedRoute.params.subscribe(async (params: any) => {
       if(params.id){
+        this.tipo = 'ACTUALIZAR';
+        this.boton = 'Actualizar';
         //estoy actualizando usuario si hay id, necesito pedr datos
         const response = await this.usuariosServices.getById(params.id)
         //rellenamos form con datos de usuario
@@ -100,12 +104,19 @@ export class FormUserComponent {
 
  async getDataForm(){
   if(this.formModel.value._id){
-    //actualizando
+    //actualizando usuario
 
     const response = await this.usuariosServices.update(this.formModel.value)
    if(response.id){
-    alert(`Usuario: ${response.first_name} ${response.last_name} se ha actualizado correctamente`)
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `Usuario: ${response.first_name} ${response.last_name} se ha actualizado correctamente`,
+      showConfirmButton: false,
+      timer: 2000
+    });
     this.router.navigate(['/home'])
+    
   }
   else {
     alert('Ops parece que hubo un problema, inténtelo de nuevo')
@@ -121,7 +132,13 @@ export class FormUserComponent {
     this.formModel.reset()
     if(response.id){
       //insertado correctamente, redirecionando a la home 
-      alert(`Usuario: ${response.first_name} ${response.last_name} se ha guardado correctamente`)
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title:`Usuario: ${response.first_name} ${response.last_name} se ha guardado correctamente`,
+        showConfirmButton: false,
+        timer: 2000
+      });
       this.router.navigate(['/home'])
     }else {
       alert('Ops parece que hubo un problema, inténtelo de nuevo')
@@ -130,7 +147,7 @@ export class FormUserComponent {
   }
     
   }
-
+ 
   //Validar formulario con una función, por limpieza de código
   checkControl(formControlName: string, validador: string): boolean | undefined {
    return this.formModel.get(formControlName)?.hasError(validador) && (this.formModel.get(formControlName)?.touched)
