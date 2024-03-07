@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UsuariosService } from '../../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-user',
@@ -11,6 +13,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class FormUserComponent {
   tipo: string = 'NUEVO';
   formModel: FormGroup;
+  usuariosServices = inject(UsuariosService);
+  router = inject(Router)
 
   constructor(){
     this.formModel = new FormGroup({
@@ -40,12 +44,20 @@ export class FormUserComponent {
     }, [])
   }
 
-  getDataForm(): void{
+ async getDataForm(){
     //aquí debemos mandar los datos a la api con un post si es para guardar
     //o put si es actualizar 
-    console.log(this.formModel.value)
+    const response = await this.usuariosServices.create(this.formModel.value)
+    console.log(response)
     //Vaciar form
     this.formModel.reset()
+    if(response.id){
+      //insertado correctamente, redirecionando a la home 
+      alert(`Usuario: ${response.first_name} ${response.last_name} se ha guardado correctamente`)
+      this.router.navigate(['/home'])
+    }else {
+      alert('Ops parece que hubo un problema, inténtelo de nuevo')
+    }
 
   }
 
