@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { IUsuario } from '../../interfaces/iusuario.interface';
 import { UsuariosService } from '../../services/usuarios.service';
@@ -15,7 +15,7 @@ export class UserDetailsComponent {
 //caputurar el id de la serie para poder hacer una peticion a la api
   activatedRoute = inject(ActivatedRoute)
   usuariosService = inject(UsuariosService)
-  unUsuario!: IUsuario;
+  @Input() unUsuario: any = {};
 
   ngOnInit(): void{
    this.activatedRoute.params.subscribe( async (params: any) =>  {

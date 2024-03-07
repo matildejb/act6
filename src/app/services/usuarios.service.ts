@@ -34,4 +34,8 @@ export class UsuariosService {
     return lastValueFrom(this.httpClient.post<IUsuario>(this.baseUrl, formValue))
   }
 
+  update(formValue: IUsuario): Promise<IUsuario>{
+    return lastValueFrom(this.httpClient.put<IUsuario>(`${this.baseUrl}/${formValue._id}`, formValue))
+  }
+
 }

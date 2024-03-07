@@ -20,7 +20,7 @@ export class HomeComponent {
   
 
   ngOnInit(): void{
-    //Observable
+    //Observable obtenemos la lista de usuarios
     this.usuariosServices.getAll().subscribe((data : any) => {
     if (data.results && Array.isArray(data.results)){
       this.misUsuarios = data.results;
