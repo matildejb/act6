@@ -1,0 +1,15 @@
+button {
+    background-color: rgb(31, 53, 109);
+    color: white;
+}
+
+input {
+    border-color: rgb(31, 53, 109);
+    width: 30%;
+}
+
+@media (max-width: 900px){
+    input {
+        width: 100%;
+    }
+}

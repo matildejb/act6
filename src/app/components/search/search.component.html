@@ -1,0 +1,14 @@
+
+    <div class="container mb-3">
+      <form class="d-flex justify-content-end" #searchForm="ngForm" (ngSubmit)="getSearch(searchForm)">
+       
+        <input class="form-control me-2" autocomplete="off" type="search" 
+        placeholder="Buscar usuario" aria-label="Search"
+        name="busqueda" ngModel>
+
+        <button class="btn btn-outline-info" type="submit">Buscar</button>
+
+      </form>
+      
+    </div>
+

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { IUsuario } from '../interfaces/iusuario.interface';
-import { Observable, lastValueFrom, of } from 'rxjs';
+import { Observable, lastValueFrom, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,34 @@ export class UsuariosService {
 
   update(formValue: IUsuario): Promise<IUsuario>{
     return lastValueFrom(this.httpClient.put<IUsuario>(`${this.baseUrl}/${formValue._id}`, formValue))
+  }
+
+  getByName(name: string): Observable<IUsuario[]> {
+    return this.httpClient.get<any>(`${this.baseUrl}`).pipe(
+      map(response => {
+        
+  // Filtrar los usuarios por nombre independientemente si tienen tildes o si estan camelcase
+        return response.results.filter((usuario: IUsuario) => {
+          let nameUsuario = this.quitarTildes(`${usuario.first_name} ${usuario.last_name}`);
+          let parameterName = this.quitarTildes(name);
+          return nameUsuario.includes(parameterName);
+        });
+      })
+    );
+ 
+  }
+
+  quitarTildes(palabra: string): string{
+   let sinTildes = ""
+   sinTildes = palabra.toLowerCase()
+   sinTildes = sinTildes.replaceAll('á', 'a')
+   sinTildes = sinTildes.replaceAll('é', 'e')
+   sinTildes = sinTildes.replaceAll('í', 'i')
+   sinTildes = sinTildes.replaceAll('ó', 'o')
+   sinTildes = sinTildes.replaceAll('ú', 'u')
+
+   return sinTildes;
+
   }
 
 }
