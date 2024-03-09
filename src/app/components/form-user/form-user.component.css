@@ -1,3 +1,7 @@
+.container {
+    padding-bottom: 100px;
+}
+
 label {
     margin-top: 15px;
     font-weight: bolder;
@@ -5,7 +9,7 @@ label {
 
 form {
     padding-left: 10px;
-    margin-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 input.ng-invalid.ng-touched {

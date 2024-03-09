@@ -1,5 +1,7 @@
 <section class="container">
     <h3 class="text-center">{{tipo}} USUARIO</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
     <form [formGroup]="formModel" (ngSubmit)="getDataForm()">
         <div>
             <label for="first_name" class="form-label">Nombre Usuario</label>
@@ -51,5 +53,7 @@
        [disabled]="!formModel.valid">
 
     </form>
+</div>
+</div>
 
 </section>
