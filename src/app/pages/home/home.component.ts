@@ -38,7 +38,7 @@ export class HomeComponent {
       else {
 
          //Observable obtenemos la lista de usuarios
-    this.usuariosServices.getAll().subscribe((data : any) => {
+    this.usuariosServices.dameUsuarios().subscribe((data : any) => {
       if (data.results && Array.isArray(data.results)){
         this.misUsuarios = data.results;
       } else {

@@ -63,7 +63,7 @@ export class FormUserComponent {
         this.tipo = 'ACTUALIZAR';
         this.boton = 'Actualizar';
         //estoy actualizando usuario si hay id, necesito pedr datos
-        const response = await this.usuariosServices.getById(params.id)
+        const response = await this.usuariosServices.usuarioPorId(params.id)
         //rellenamos form con datos de usuario
         //Opcion corta
        // this.formModel.setValue(response)
@@ -106,7 +106,7 @@ export class FormUserComponent {
   if(this.formModel.value._id){
     //actualizando usuario
 
-    const response = await this.usuariosServices.update(this.formModel.value)
+    const response = await this.usuariosServices.actualizar(this.formModel.value)
    if(response.id){
     Swal.fire({
       position: "center",
@@ -126,7 +126,7 @@ export class FormUserComponent {
     //nuevo usuario
     //aquí debemos mandar los datos a la api con un post si es para guardar
     //o put si es actualizar 
-    const response = await this.usuariosServices.create(this.formModel.value)
+    const response = await this.usuariosServices.crear(this.formModel.value)
     console.log(response)
     //Vaciar form
     this.formModel.reset()

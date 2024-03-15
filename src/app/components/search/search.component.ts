@@ -27,7 +27,7 @@ export class SearchComponent {
   }
 
   obtenerUsuarios(): void {
-    this.usuariosServices.getAll().subscribe((data: any) => {
+    this.usuariosServices.dameUsuarios().subscribe((data: any) => {
       if (data && data.results && Array.isArray(data.results)) {
         this.misUsuarios = data.results;
       } else {
