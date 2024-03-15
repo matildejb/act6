@@ -8,47 +8,41 @@ import { SearchComponent } from '../../components/search/search.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [UserCardComponent ,RouterLink, SearchComponent],
+  imports: [UserCardComponent, RouterLink, SearchComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
-
- private usuariosServices = inject(UsuariosService)
+  usuariosServices = inject(UsuariosService);
   misUsuarios: IUsuario[] = [];
-  activatedRoute = inject(ActivatedRoute)
-  
+  //Ruta activada actualmente, ruta dinamica que se utiliza para el ID de usuario
+  //Se puede acceder al valor de id usando activatedRouted
+  activatedRoute = inject(ActivatedRoute);
 
-  ngOnInit(): void{
-    //Para mostrar el usuario que se busca  por el input con boton buscar
+  ngOnInit(): void {
+    //Para mostrar el usuario que se busca en el input con boton buscar
     this.activatedRoute.queryParams.subscribe((queryParams: any) => {
       let query = queryParams.query;
 
-      if(query) {
+      if (query) {
         this.usuariosServices.getByName(query).subscribe(
-          usuarios => {
+          (usuarios) => {
             this.misUsuarios = usuarios;
           },
-          error => {
-            console.error('Error al buscar usuario', error); 
+          (error) => {
+            console.error('Error al buscar usuario', error);
           }
-        )
-
-      } 
-      else {
-
-         //Observable obtenemos la lista de usuarios
-    this.usuariosServices.dameUsuarios().subscribe((data : any) => {
-      if (data.results && Array.isArray(data.results)){
-        this.misUsuarios = data.results;
+        );
       } else {
-        console.error('El dato recibido no es un arreglo válido', data)
+        //Observable obtenemos la lista de usuarios
+        this.usuariosServices.dameUsuarios().subscribe((data: any) => {
+          if (data.results && Array.isArray(data.results)) {
+            this.misUsuarios = data.results;
+          } else {
+            console.error('El dato recibido no es un arreglo válido', data);
+          }
+        });
       }
-      })
-        
-      }
-    }); 
-
+    });
   }
-
 }

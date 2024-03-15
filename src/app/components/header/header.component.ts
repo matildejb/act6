@@ -8,12 +8,12 @@ import { NightModeService } from '../../services/night-mode.service';
   standalone: true,
   imports: [RouterLink, BotonNightComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  private nightModeService = inject(NightModeService)
-  
-  toggleNightMode(){
+  private nightModeService = inject(NightModeService);
+
+  toggleNightMode() {
     this.nightModeService.toggleNightMode();
-  } 
+  }
 }

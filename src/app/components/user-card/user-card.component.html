@@ -1,10 +1,17 @@
-
-      <div class="card h-100">
-        <div class="text-center">
-          <img class="card-img-top p-2" [src]="miUsuario.image" [alt]="miUsuario.username" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title mb-3 text-center">{{miUsuario.first_name}} {{miUsuario.last_name}}</h5>
-          <app-botonera [parent]="'card'" [idUsuario]="miUsuario._id"></app-botonera>
-        </div>
-      </div>
+<!--Relacionamos el componente home con componente card con un input
+llamado miUsuario y seleccionamos los datos necesarios que contiene nuestra interfaz -->
+<div class="card h-100">
+  <div class="text-center">
+    <img
+      class="card-img-top p-2"
+      [src]="miUsuario.image"
+      [alt]="miUsuario.username"
+    />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title mb-2 text-center">
+      {{ miUsuario.first_name }} {{ miUsuario.last_name }}
+    </h5>
+    <app-botonera [parent]="'card'" [idUsuario]="miUsuario._id"></app-botonera>
+  </div>
+</div>

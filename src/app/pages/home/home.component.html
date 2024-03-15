@@ -1,12 +1,17 @@
+<!--Se representa el buscador que filtra usuarios por nombre
+ y la lista de usuarios que se dibuja con un bucle for, donde 
+añadimos el componente user-card que es donde damos formato
+a cada usuario-->
+
 <app-search></app-search>
 <div class="container pb-5 mb-5">
-    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5"> 
-    @for(usuario of misUsuarios; track usuario.id){    
-<app-user-card [miUsuario]="usuario"></app-user-card>     
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+    @for(usuario of misUsuarios; track usuario.id){
+    <app-user-card [miUsuario]="usuario"></app-user-card>
     } @empty {
-        <div class="alert alert-warning text-center">
-            <h3>No hay resultados</h3>
-        </div>
+    <div class="alert alert-warning text-center">
+      <h3>No hay resultados</h3>
+    </div>
     }
-</div> 
+  </div>
 </div>

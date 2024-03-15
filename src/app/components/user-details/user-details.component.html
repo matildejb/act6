@@ -1,18 +1,29 @@
+<!--Detalle de cada usuario, reutilizamos el componente botonera tanto en el detalle usuario como en el card user-->
+
 <div class="container mb-5 pb-5">
-<div class="card">
+  <div class="card">
     <div class="card-body d-flex justify-content-center align-items-center">
       <div class="mr-3 imagen">
-        <img [src]="unUsuario.image" class="img-fluid" [alt]="unUsuario.first_name">
+        <img
+          [src]="unUsuario.image"
+          class="img-fluid"
+          [alt]="unUsuario.first_name"
+        />
       </div>
       <div>
         <div class="mb-3">
-          <h4 class="card-title">{{unUsuario.first_name}}</h4>
-          <h4 class="card-title">{{unUsuario.last_name}}</h4>
-          <p class="card-text mt-4"><strong>Nombre Usuario:</strong> {{unUsuario.username}}</p>
-          <p class="card-text"><strong>Email: </strong>{{unUsuario.email}}</p>
+          <h4 class="card-title">{{ unUsuario.first_name }}</h4>
+          <h4 class="card-title">{{ unUsuario.last_name }}</h4>
+          <p class="card-text mt-4">
+            <strong>Nombre Usuario:</strong> {{ unUsuario.username }}
+          </p>
+          <p class="card-text"><strong>Email: </strong>{{ unUsuario.email }}</p>
         </div>
-       <app-botonera [parent]="'detail'" [idUsuario]="unUsuario._id"></app-botonera>
+        <app-botonera
+          [parent]="'detail'"
+          [idUsuario]="unUsuario._id"
+        ></app-botonera>
       </div>
     </div>
-    </div>
+  </div>
 </div>

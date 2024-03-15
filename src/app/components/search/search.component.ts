@@ -8,22 +8,22 @@ import { UsuariosService } from '../../services/usuarios.service';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  styleUrl: './search.component.css',
 })
 export class SearchComponent {
   busqueda: string = ''; // Propiedad para almacenar el valor del campo de búsqueda
   misUsuarios: any[] = []; // Propiedad para almacenar los usuarios
-  
-  router = inject(Router)
-  usuariosServices = inject(UsuariosService)
+
+  router = inject(Router);
+  usuariosServices = inject(UsuariosService);
 
   ngOnInit(): void {
     this.obtenerUsuarios(); // Obtener la lista de usuarios al inicializar el componente
   }
 
-  getSearch(searchForm: any) : void{
-   let busqueda = searchForm.value.busqueda;
-   this.router.navigateByUrl("/home?query=" + busqueda)
+  getSearch(searchForm: any): void {
+    let busqueda = searchForm.value.busqueda;
+    this.router.navigateByUrl('/home?query=' + busqueda);
   }
 
   obtenerUsuarios(): void {
@@ -35,7 +35,4 @@ export class SearchComponent {
       }
     });
   }
-
 }
-
-
