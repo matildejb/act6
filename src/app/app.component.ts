@@ -13,6 +13,11 @@ import { NgClass } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+   
+  //Componente principal de nuestra app
+  // 
+
+
   title = 'act6';
   nightMode: boolean = false; 
   nightModeService = inject(NightModeService)
