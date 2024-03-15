@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NightModeService {
-  nightMode: boolean = false; 
+  //Este servicio gestiona el estado del modo nocturno en nuestra app
 
- toggleNightMode() {
-  this.nightMode = !this.nightMode;
+  //Creamos una variable boolean, el estado inicial nocturno es false
+  nightMode: boolean = false;
 
- } 
+  //Con este método cambiaremos el estado
+  toggleNightMode() {
+    this.nightMode = !this.nightMode;
+  }
 
- isNightMode(){
-  return this.nightMode;
- }
-
+  //Devuelveme el estado actual
+  isNightMode() {
+    return this.nightMode;
+  }
 }

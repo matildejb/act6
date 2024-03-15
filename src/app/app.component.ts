@@ -10,20 +10,18 @@ import { NgClass } from '@angular/common';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, NgClass],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-   
   //Componente principal de nuestra app
-  // 
-
+  //Injectamos el servicio night-mode para utilzar el modo nocturno
+  //El método isNightMode nos da acceso al modo nocturno en la plantilla HTML de
+  //nuestro componente princial
 
   title = 'act6';
-  nightMode: boolean = false; 
-  nightModeService = inject(NightModeService)
+  nightModeService = inject(NightModeService);
 
   isNightMode() {
-   return this.nightModeService.isNightMode();
+    return this.nightModeService.isNightMode();
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, inject,  } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NightModeService } from '../../services/night-mode.service';
 
 @Component({
@@ -6,15 +6,17 @@ import { NightModeService } from '../../services/night-mode.service';
   standalone: true,
   imports: [],
   templateUrl: './boton-night.component.html',
-  styleUrl: './boton-night.component.css'
+  styleUrl: './boton-night.component.css',
 })
 export class BotonNightComponent {
-  private nightModeService = inject(NightModeService)
-  tipo: string = "Oscuro";
+  //Injectamos el servicio night-mode
+  private nightModeService = inject(NightModeService);
+  //Definimos una propiedad tipo, inicializada a Nocturno
+  tipo: string = 'Nocturno';
 
-  toggleNightMode(){
+  //Este método se llamará cuando se haga click en el botón
+  toggleNightMode() {
     this.nightModeService.toggleNightMode();
-    this.tipo = this.nightModeService.isNightMode() ? "Diurno" : "Nocturno";
-  } 
-
+    this.tipo = this.nightModeService.isNightMode() ? 'Diurno' : 'Nocturno';
+  }
 }

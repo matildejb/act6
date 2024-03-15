@@ -1,16 +1,18 @@
-<div [class.night-mode]="isNightMode()"> 
-<header>
-  <app-header></app-header>
-</header>
+<!--Dependiendo del estado del boton (modo Nocturno) se aplicará 
+  un clase u otra, escrita en el css del componente principal
+   aplicamos este div agrupando todas las partes de la app
+   para que cambie la pagina completa de color-->
+<div [class.night-mode]="isNightMode()">
+  <header>
+    <app-header></app-header>
+  </header>
 
+  <main class="container">
+    <!--Esta etiqueta es impresindible si trabajamos con rutas-->
+    <router-outlet />
+  </main>
 
-<main class="container">
-  <router-outlet />
-</main>
-
-
-<footer>
-  <app-footer></app-footer>
-</footer>
-
+  <footer>
+    <app-footer></app-footer>
+  </footer>
 </div>
