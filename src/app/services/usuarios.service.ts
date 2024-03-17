@@ -14,10 +14,13 @@ export class UsuariosService {
   private httpClient = inject(HttpClient);
   //Esta variable almacena la url base de la API de usuarios
   private baseUrl: string = 'https://peticiones.online/api/users';
+  private baseUrlxp: string = 'https://peticiones.online/api/users?page=2';
+
 
   //Observable nativo en angular
-  dameUsuarios(): Observable<IUsuario[]> {
-    return this.httpClient.get<IUsuario[]>(this.baseUrl);
+  dameUsuarios(page: number = 1): Observable<IUsuario[]> {
+    const url = page === 1 ? this.baseUrl : this.baseUrlxp;
+    return this.httpClient.get<IUsuario[]>(url);
   }
 
   //Promesa nativo en JavaScript

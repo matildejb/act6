@@ -2,9 +2,10 @@
  y la lista de usuarios que se dibuja con un bucle for, donde 
 añadimos el componente user-card que es donde damos formato
 a cada usuario-->
-
+<button (click)="primeraPagina()">1 page</button>
+<button (click)="segundaPagina()">2 page</button>
 <app-search></app-search>
-<div class="container pb-5 mb-5">
+<div class="container pb-5 mb-5 vh-100">
   <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
     @for(usuario of misUsuarios; track usuario.id){
     <app-user-card [miUsuario]="usuario"></app-user-card>

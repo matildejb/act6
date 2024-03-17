@@ -34,15 +34,34 @@ export class HomeComponent {
           }
         );
       } else {
-        //Observable obtenemos la lista de usuarios
-        this.usuariosServices.dameUsuarios().subscribe((data: any) => {
-          if (data.results && Array.isArray(data.results)) {
-            this.misUsuarios = data.results;
-          } else {
-            console.error('El dato recibido no es un arreglo válido', data);
-          }
-        });
+        //Observable obtenemos la lista de usuarios pagina 1
+        this.primeraPagina()
+       
       }
     });
   }
+
+  primeraPagina(): void {
+    this.usuariosServices.dameUsuarios(1).subscribe((data: any) => {
+
+      if (data && Array.isArray(data.results)) {
+        this.misUsuarios = data.results;
+
+      } else {
+        console.error('El dato recibido no es un arreglo válido', data);
+      }
+    });
+  }
+
+  segundaPagina(): void {
+    this.usuariosServices.dameUsuarios(2).subscribe((data: any) => {
+     
+      if (data && Array.isArray(data.results)) {
+        this.misUsuarios = data.results;
+      } else {
+        console.error('El dato recibido no es un arreglo válido', data);
+      }
+    });
+  }
+
 }
