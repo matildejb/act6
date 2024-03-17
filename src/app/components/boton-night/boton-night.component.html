@@ -1,1 +1,2 @@
-<button (click)="toggleNightMode()" type="button" class="btn btn-dark">Modo {{tipo}}</button>
+<button (click)="toggleNightMode()" type="button" class="btn" [style.background-color]="color"
+[style.color]="texto">Modo {{tipo}}</button>

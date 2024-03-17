@@ -13,10 +13,14 @@ export class BotonNightComponent {
   private nightModeService = inject(NightModeService);
   //Definimos una propiedad tipo, inicializada a Nocturno
   tipo: string = 'Nocturno';
+  color: string = "black";
+  texto: string= "white"
 
   //Este método se llamará cuando se haga click en el botón
   toggleNightMode() {
     this.nightModeService.toggleNightMode();
     this.tipo = this.nightModeService.isNightMode() ? 'Diurno' : 'Nocturno';
+    this.color = this.nightModeService.isNightMode() ? 'white' : 'black';
+    this.texto = this.nightModeService.isNightMode() ? 'black' : 'white';
   }
 }
