@@ -5,10 +5,10 @@
 }
 
 .container {
-    background-size: cover;
+    background-size: cover;  
 }
 
-.container {
+.containerb {
     display: flex;
     justify-content: space-between;
 }
@@ -17,4 +17,18 @@
     display: flex;
     gap: 10px;
     padding: 10px;
+}
+
+@media (max-width: 600px){
+
+    .containerb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .btn {
+        font-size: 10px;
+
+    }
 }
