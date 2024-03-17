@@ -11,3 +11,4 @@ export interface IResponse {
 
 //Este modelo lo creamos para poder trabajar con la paginación
 //Sacar todas las paginas que contiene la API externa  ??
+//Al final no lo he usado 
