@@ -1,0 +1,9 @@
+.card {
+    height: 370px;
+}
+
+@media only screen and (max-width: 768px) {
+    .card {
+        height: auto;
+    }
+  }
